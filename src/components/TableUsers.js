@@ -15,9 +15,10 @@ const TableUsers = () => {
         let res = await fetchAllUser();
         // vì mình sử dụng promise thì phải sử dụng await, async để lấy ra data
         // thằng javascript là bất đồng bộ vì vậy những hành động như gọi API mình phải sử dụng await
-        if (res && res.data && res.data.data){//.data đầu tiên là của thg axio, data thứ hai chính của của api trả về 
+        // if (res && res.data && res.data.data){//.data đầu tiên là của thg axio, data thứ hai chính của của api trả về 
+        if (res && res.data ){// res ở đây ngta trả về đã là axios.data rồi vậy nên chỉ cần gọi thêm data là lấy được dũ liệu cần thiết
           //khi api không trả về res thì res.data sẽ sinh ra lỗi từ đó ứng dụng sẽ chhết thẳng cẳng, để check cho mình 
-            setListUsers(res.data.data)
+            setListUsers(res.data)
         }
     }
     //để kiểm soát được dữ liệu chúng ta sẻ cần sử dụng đến state cảu react
@@ -53,17 +54,6 @@ const TableUsers = () => {
         })
         }
         
-        <tr>
-          <td>2</td>
-          <td>Jacob</td>
-          <td>Thornton</td>
-          <td>@fat</td>
-        </tr>
-        <tr>
-          <td>3</td>
-          <td colSpan={2}>Larry the Bird</td>
-          <td>@twitter</td>
-        </tr>
       </tbody>
     </Table>
     
